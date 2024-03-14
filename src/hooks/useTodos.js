@@ -24,11 +24,13 @@ export const useTodos = () => {
       setLoading(true);
       const resp = await new TodoService().fetchTodos();
 
+      console.log("resp", resp);
       setTodos(resp.data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
       setError(error);
+      console.log(error);
     }
   };
 

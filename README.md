@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 We will discuss about how we can configure our app with testing libraries and detail description on how we should write the test the app.
 
+## Why?
+
 ## Available Script
 
 `npm test`

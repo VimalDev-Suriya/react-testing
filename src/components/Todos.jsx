@@ -4,16 +4,16 @@ import { useTodos } from "../hooks/useTodos";
 import TodoList from "./TodoList";
 
 const Todos = () => {
-  const [user, setUser] = useState(1);
-  const { error, fetchTodosUser, loading, todos, fetchTodos } = useTodos();
+  const [user, setUser] = useState();
   const [tab, setTab] = useState("all");
+  const { error, fetchTodosUser, loading, todos, fetchTodos } = useTodos();
 
   useEffect(() => {
     fetchTodosUser();
   }, []);
 
   useEffect(() => {
-    if (todos.length) {
+    if (todos?.length) {
       if (user === "all") {
         fetchTodos();
       } else {
@@ -23,16 +23,16 @@ const Todos = () => {
   }, [user]);
 
   if (error) {
-    return <div>Error occured</div>;
+    return <div data-testid="error">Error occured</div>;
   }
 
   if (loading) {
-    return <div>Loading</div>;
+    return <div data-testid="loading">Loading</div>;
   }
 
   return (
     <>
-      <h1>Active User: {user}</h1>
+      <h1>Active User: {user || 1}</h1>
       <UserSelect val={user} onChange={(e) => setUser(e.target.value)} />
 
       <div className="btn-group">
